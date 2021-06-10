@@ -9,7 +9,16 @@ jobs:
     name: Prueba
     runs-on: ubuntu-latest
     steps:
-    - name: check action properties
+    - name: Check out code
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: Merge upstream
       run: |
-        echo ${{ github }}
+        git remote add upstream https://github.com/${{ github.repository }}.git
+        git fetch upstream ${{ github.base_ref }}
+        git pull --no-commit upstream ${{ github.base_ref }} || git merge --abort
       shell: bash
+    - name: check action properties
+      # should show the files from main branch and incoming PR branch
+      run: ls
