@@ -11,5 +11,5 @@ jobs:
     steps:
     - name: check action properties
       run: |
-        echo ${{ github }}
+        echo ${{ toJSON(github) }}
       shell: bash
