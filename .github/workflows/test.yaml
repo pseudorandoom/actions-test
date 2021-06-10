@@ -1,0 +1,15 @@
+name: Test
+
+on:
+  pull_request:
+    branches: [ 'main', 'master']
+
+jobs:
+  test:
+    name: Prueba
+    runs-on: ubuntu-latest
+    steps:
+    - name: check action properties
+      run: |
+        echo ${{ github }}
+      shell: bash
