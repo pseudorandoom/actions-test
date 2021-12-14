@@ -18,6 +18,7 @@ jobs:
         git remote add upstream https://github.com/${{ github.repository }}.git
         git fetch upstream ${{ github.base_ref }}
         git pull --no-commit upstream ${{ github.base_ref }} || git merge --abort
+        false
       shell: bash
     - name: check action properties
       # should show the files from main branch and incoming PR branch
